@@ -25,6 +25,7 @@
 // to make views framework-neutral
 .column {
   @include six-columns-centered;
+
   }
 .form {
   @include grid-column(6);
@@ -40,7 +41,7 @@
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #eee;
+  background-color: #FFFFFF;
   }
 section {
   @extend .row;
@@ -89,4 +90,8 @@ section {
   @extend .button;
   @extend .radius;
   @extend .tiny;
+}
+.table {
+  border:none;
+
 }
