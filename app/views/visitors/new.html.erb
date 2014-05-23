@@ -8,7 +8,7 @@
     <div class="form-centered">
       <%= simple_form_for @visitor do |f| %>
         <%= f.error_notification %>
-        <%= f.input :email, label: false, :placeholder => 'Your Twitter or email address...' %>
+        <%= f.input :email, label: false, :placeholder => 'Your Email' %>
         <br/>
         <%= f.button :submit, "Click Here to Send", :class => "submit" %>
       <% end %>

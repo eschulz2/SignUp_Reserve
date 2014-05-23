@@ -10,8 +10,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
+gem 'activerecord-tableless'
 gem 'devise'
 gem 'foundation-rails'
+gem 'gibbon'
 gem 'simple_form'
 gem 'rails_apps_pages'
 group :development do
