@@ -1,2 +1,7 @@
 <td><%= user.name %></td>
 <td><%= link_to user.email, user %></td>
+<td>Created At: <%= user.created_at %></td>
+<td>Updated At: <%= user.updated_at %></td>
+<td>Sign In Count: <%= user.sign_in_count %></td>
+<td>Last Sign In: <%= user.last_sign_in_at %></td>
+<td>Current Sign In IP: <%= user.current_sign_in_ip %></td>
