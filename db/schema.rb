@@ -11,15 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522183841) do
+ActiveRecord::Schema.define(version: 20140602164506) do
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "datetime"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seats", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "seat_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -32,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140522183841) do
     t.integer  "age"
     t.string   "shoesize"
     t.integer  "credit",                 default: 1
+    t.boolean  "create_priviledges",     default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

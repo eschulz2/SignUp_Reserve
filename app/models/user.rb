@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :created_events, class_name: "Event",
+                            foreign_key: "creator_id"
+  has_many :seats
+  has_and_belongs_to_many :attended_event, join_table: "seats", class_name: "Event"
+
   def name
     [first_name, last_name].compact.join(' ')
   end
