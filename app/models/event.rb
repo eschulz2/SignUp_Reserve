@@ -10,4 +10,13 @@ class Event < ActiveRecord::Base
   def available_seats
   	seats.select(&:available?)
   end
+
+  def create_seats(seat_count)
+  	new_seats = []
+  	event_id = self.id
+  	seat_count.times do |counter|
+  		new_seats << Seat.new(event_id: event_id, seat_number: (counter + 1))
+  	end
+  	self.seats = new_seats
+  end
 end

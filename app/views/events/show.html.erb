@@ -19,12 +19,6 @@ Select a seat to buy or change:
   <input type="submit" value="buy/change seat">
 </form>
 
-<form action="/seats/cancel" method="post">
-  <input type="hidden" name="event_id" value="<%= @event.id %>">
-  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-  <input type="submit" value="cancel reservation">
-</form>
-
 <div id="seating_chart">
   <% @seat_rows.each do |seat_row| %>
     <% seat_row.each do |seat| %> 

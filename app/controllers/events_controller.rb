@@ -27,7 +27,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    current_user.created_events << @event
+    @event.create_seats(params[:seat_count].to_i)
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -71,6 +72,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event]
+      params.permit(:name, :datetime, :description)
     end
 end

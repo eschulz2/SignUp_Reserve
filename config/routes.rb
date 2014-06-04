@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users
   resources :visitors
   resources :events
+  post "/seats" => 'seats#reserve_seat'
 end

@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def name
     [self.first_name, self.last_name].compact.join(' ')
   end
+
+  def current_seat(event_id)
+    seats.where(event_id: event_id, user_id: current_user.id).first
+  end
 end
