@@ -9,5 +9,7 @@
 <% if user_signed_in? %>
   <li><%= link_to 'Users', users_path %></li>
   <li><%= link_to 'Events', events_path %></li>
+<% end %>
+<% if user_signed_in? && current_user.can_create_events? %>
   <li><%= link_to 'Create event', new_event_path %></li>
 <% end %>
