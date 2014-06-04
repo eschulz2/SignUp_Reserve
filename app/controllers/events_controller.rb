@@ -6,6 +6,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    @seat_rows = @event.seat_rows
   end
 
   def new
