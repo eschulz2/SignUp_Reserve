@@ -5,11 +5,14 @@ class SeatsController < ApplicationController
   		                     user_id: current_user.id).first
   	if @prev_seat
   		@prev_seat.update(user.id: nil)
+      @seat.update(user_id: current_user.id)
   	else
-  		current_user.credit -=1
-  		current_user.save
+  		if current_user.has_credits?
+        current_user.credit -=1
+        current_user.save
+        @seat.update(user_id: current_user.id)
+      end
   	end
-  	@seat.update(user_id: current_user.id)
   	redirect_to event_path(@seat.event)
   end
 end

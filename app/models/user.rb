@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def current_seat(event_id)
     seats.where(event_id: event_id, user_id: current_user.id).first
   end
+
+  def has_credits?
+    credit > 0
+  end
 end
