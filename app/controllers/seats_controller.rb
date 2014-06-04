@@ -4,7 +4,7 @@ class SeatsController < ApplicationController
   	@prev_seat = Seat.where(event_id: params["event_id"],
   		                     user_id: current_user.id).first
   	if @prev_seat
-  		@prev_seat.update(user.id: nil)
+  		@prev_seat.update(user_id: nil)
       @seat.update(user_id: current_user.id)
   	else
   		if current_user.has_credits?
