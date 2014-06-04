@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :attended_event, join_table: "seats", class_name: "Event"
 
   def name
-    [first_name, last_name].compact.join(' ')
+    [self.first_name, self.last_name].compact.join(' ')
   end
 end

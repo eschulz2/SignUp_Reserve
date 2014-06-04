@@ -1,4 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to, 'Edit', edit_event_path(@event) %>
-<%= link_to, 'Back', events_path %>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+<h1><%= @event.name %></h1>
+<h2><%= @event.datetime %></h2>
+
+Select a seat to buy or change: 
+<form action="/seats" method="post">
+  <select name="seat_id">
+    <option value="" selected="selected">Available seats</option>
+    <% @event.available_seats.each do |as| %>
+      <option value="<%= as.id %>">seat #<%= as.seat_number %></option>
+    <% end %>
+  </select>
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <input type="hidden" name="event_id" value="<%= @event.id %>">
+  <input type="submit" value="buy/change seat">
+</form>
+
+<form action="/seats/cancel" method="post">
+  <input type="hidden" name="event_id" value="<%= @event.id %>">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <input type="submit" value="cancel reservation">
+</form>
+
+<div id="seating_chart">
+  <% @seat_rows.each do |seat_row| %>
+    <% seat_row.each do |seat| %> 
+      <div id="<%= seat.id %>"class="seat <%= "taken" if seat.taken? %>">
+        seat #<%= seat.seat_number %><br/>
+        <%= seat.taken? ? seat.attendee.name : "available" %>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
+</div>
