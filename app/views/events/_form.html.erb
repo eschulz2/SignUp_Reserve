@@ -2,9 +2,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+  	Event name: <input type="text" name="name">
+    When: <input type="datetime-local" name="datetime">
+    Number of seats: <input type="number" name="seat_count" min="1" max="100">
+    Event description: <input id="event_desc" type="textarea" name="description">
   </div>
 
   <div class="form-actions">
-  	<%= f.button :submit %>
+    <%= f.button :submit %>
   </div>
-<%end%>
+<% end %>
