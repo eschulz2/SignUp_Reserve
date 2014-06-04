@@ -24,4 +24,14 @@ class User < ActiveRecord::Base
   def can_create_events?
     create_privileges
   end
+
+  def deduct_credit
+    self.credit -= 1
+    self.save
+  end
+
+  def add_credit
+    self.credit += 1
+    self.save
+  end
 end

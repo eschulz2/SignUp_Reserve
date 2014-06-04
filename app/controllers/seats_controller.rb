@@ -8,8 +8,7 @@ class SeatsController < ApplicationController
       @seat.update(user_id: current_user.id)
   	else
   		if current_user.has_credits?
-        current_user.credit -=1
-        current_user.save
+        current_user.deduct_credit
         @seat.update(user_id: current_user.id)
       end
   	end
