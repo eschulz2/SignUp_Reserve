@@ -26,18 +26,20 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-    current_user.created_events << @event
-    @event.create_seats(params[:seat_count].to_i)
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    # if current_user.can_create_events?
+      @event = Event.new(event_params)
+      current_user.created_events << @event
+      @event.create_seats(params[:seat_count].to_i)
+      respond_to do |format|
+        if @event.save
+          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.json { render :show, status: :created, location: @event }
+        else
+          format.html { render :new }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    # end
   end
 
   # PATCH/PUT /events/1

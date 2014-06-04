@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def has_credits?
     credit > 0
   end
+
+  def can_create_events?
+    create_privileges
+  end
 end
