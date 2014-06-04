@@ -14,4 +14,15 @@ class SeatsController < ApplicationController
   	end
   	redirect_to event_path(@seat.event)
   end
+
+  def cancel_reservation
+    @event = Event.find(params["event_id"])
+    if @seat = @event.attendees_seat(current_user.id)
+      @seat.cancel_reservation
+      current_user.add_credit
+      @seat.save
+      current_user.save
+    end
+    redirect_to event_path(@event)
+  end
 end

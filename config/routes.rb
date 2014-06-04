@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :visitors
   resources :events
   post "/seats" => 'seats#reserve_seat'
+  post "/seats/cancel" => 'seats#cancel_reservation'
 end

@@ -13,4 +13,8 @@ class Seat < ActiveRecord::Base
   def available?
   	!taken?
   end
+
+  def cancel_reservation
+    self.user_id = nil
+  end
 end

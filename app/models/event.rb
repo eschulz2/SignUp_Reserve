@@ -19,4 +19,8 @@ class Event < ActiveRecord::Base
   	end
   	self.seats = new_seats
   end
+
+  def attendees_seat(user_id)
+    self.seats.find_by_user_id(user_id)
+  end
 end
