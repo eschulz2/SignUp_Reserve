@@ -1,6 +1,7 @@
 Rails Devise
 ========================
 
+Schema:  http://imgur.com/L3oloSJ
 
 Preferences:
 
